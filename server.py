@@ -19,7 +19,7 @@
 #
 # remember to:
 #     pip install flask
-
+from os.path import dirname, join, realpath
 
 import flask
 from flask import Flask, Response, request
@@ -79,7 +79,8 @@ def flask_post_json() -> dict:
 @app.route("/")
 def hello():
     '''Return something coherent here.. perhaps redirect to /static/index.html '''
-    with open('static/index.html') as f:
+    UPLOADS_PATH = join(dirname(realpath(__file__)), 'static/index.html')
+    with open(UPLOADS_PATH) as f:
         lines = f.read()
     return Response(lines)
 
