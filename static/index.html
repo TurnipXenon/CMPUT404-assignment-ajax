@@ -162,6 +162,7 @@
         world[entity] = data;
         drawNextFrame(); // todo: (but should we?)
         //XXX: Send a XHTML Request that updates the entity you just  modified!
+        // todo: figure out why data is has missing size
         sendJSONXMLHTTPRequest(`${url}/entity/${entity}`, JSON.stringify(data), postCallback)
 
     }
@@ -290,9 +291,9 @@
     let isFree = true;
 
     function getCallback(data) {
-        console.log(data);
         world = data;
         drawNextFrame();
+        isFree = true;
     }
 
     function update() {
@@ -301,17 +302,6 @@
             isFree = false;
             // todo(turnip): get head call to save time
             sendJSONXMLHTTPRequest(`${url}/world`, null, getCallback);
-            //fetch(`${url}/world`, {
-            //    method: 'GET',
-            //    headers: myHeaders,
-            //})
-            //    .then((response) => response.json())
-            //    .then((data) => {
-            //        // world = data;
-            //        console.log(data);
-            //        world = data;
-            //        drawNextFrame();
-            //    })
             // todo(turnip): update current world
         }
 

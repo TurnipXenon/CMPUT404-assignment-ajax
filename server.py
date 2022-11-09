@@ -110,7 +110,7 @@ def get_entity(entity):
 def clear():
     '''Clear the world out!'''
     myWorld.clear()
-    return Response()
+    return world()
 
 
 if __name__ == "__main__":
